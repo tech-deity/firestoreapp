@@ -1,0 +1,83 @@
+package com.techdeity.myfirebaseapp;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+public class Login2FireStore extends AppCompatActivity {
+
+    @BindView(R.id.l_email_et)
+    EditText lEmailEt;
+    @BindView(R.id.l_pwd_et)
+    EditText lPwdEt;
+    @BindView(R.id.l_login_btn)
+    Button lLoginBtn;
+    @BindView(R.id.l_tv)
+    TextView lTv;
+    FirebaseAuth fAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login2_fire_store);
+        ButterKnife.bind(this);
+        fAuth=FirebaseAuth.getInstance();
+
+        lLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email=lEmailEt.getText().toString().trim();
+                String password=lPwdEt.getText().toString().trim();
+                if(TextUtils.isEmpty(email)){
+                    lEmailEt.setError("email is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(password))
+                {
+                    lPwdEt.setError("password is required");
+                        return;
+                }
+                if(password.length()<6)
+                {
+                    lPwdEt.setError("password must be >=6");
+                    return;
+                }
+                fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Login2FireStore.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        }
+                        else{
+                            Toast.makeText(Login2FireStore.this, "Register user first", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
+        lTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Register2Firestore.class));
+            }
+        });
+    }
+}
