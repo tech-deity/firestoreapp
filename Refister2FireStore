@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="4dp"
+    android:gravity="center"
+    tools:context=".Register2Firestore">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:text="Register Account"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:fontFamily="casual"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/r_un_et"
+            android:background="@drawable/et_border"
+            android:padding="4dp"
+            android:hint="User Name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <EditText
+            android:id="@+id/r_email_et"
+            android:background="@drawable/et_border"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:id="@+id/r_ph_et"
+            android:background="@drawable/et_border"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:hint="phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+
+        <EditText
+            android:id="@+id/r_pwd_et"
+            android:background="@drawable/et_border"
+            android:padding="4dp"
+            android:layout_marginTop="4dp"
+            android:inputType="textPassword"
+            android:hint="password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/r_reg_btn"
+            android:background="@drawable/button_drawable"
+            android:text="Register"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
